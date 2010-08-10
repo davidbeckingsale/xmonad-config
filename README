@@ -1,0 +1,26 @@
+xmonad-config
+=============
+
+Here is my xonad.hs, as well as any supporting material that is
+needed.
+
+Installation
+------------
+
+Simply copy my file into you ~/.xmonad directory and then recompile.
+Other necessary files are coming soon...
+
+Notes
+-----
+
+To get the benefit of xft fonts in dzen, use an development version
+
+
+License
+-------
+
+This file is released under the GNU GPL, please feel free to use it
+and modify it in any way you see fit.
+
+If you feel your enhancements are worthwile, please feel free to fork
+the repo and share your changes with others.
