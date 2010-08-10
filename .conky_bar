@@ -1,0 +1,15 @@
+gap_y -1000
+ 
+background no
+double_buffer yes 
+out_to_console yes 
+own_window yes 
+own_window_type desktop
+update_interval 1.0 
+ 
+TEXT
+# [${execp python ~/.scripts/conkyExaile/conkyExaile.py -t ~/.scripts/conkyExaile/format} 
+ CPU:${cpu cpu0}% @ ${freq_g}GHz ^fg(\#7F9F7F)::^fg()\
+ RAM:$memperc% ^fg(\#7F9F7F)::^fg()\
+ BAT:${battery_short BAT0} ^fg(\#7F9F7F)::^fg()\
+ ${time %b %e %H:%M:%S}
