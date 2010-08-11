@@ -68,7 +68,7 @@ myFont = "Terminus-6"
 --- Main Colours
 myFgColor = "#DCDCCC"
 myBgColor = "#000000"
-myHighlightedFgColor = myFgColor
+myHighlightedFgColor = myBgColor
 myHighlightedBgColor = "#79FA16"
 
 --- Borders
@@ -81,7 +81,7 @@ myCurrentWsFgColor = myHighlightedFgColor
 myCurrentWsBgColor = myHighlightedBgColor
 myVisibleWsFgColor = myBgColor
 myVisibleWsBgColor = "#CCDC90"
-myHiddenWsFgColor = myHighlightedFgColor
+myHiddenWsFgColor = myFgColor
 myHiddenEmptyWsFgColor = "#8F8F8F"
 myUrgentWsBgColor = "#DCA3A3"
 myTitleFgColor = myFgColor
