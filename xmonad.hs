@@ -67,13 +67,13 @@ myFont = "Terminus-6"
 
 --- Main Colours
 myFgColor = "#DCDCCC"
-myBgColor = "#3f3f3f"
+myBgColor = "#000000"
 myHighlightedFgColor = myFgColor
-myHighlightedBgColor = "#7F9F7F"
+myHighlightedBgColor = "#79FA16"
 
 --- Borders
 myActiveBorderColor = myCurrentWsBgColor
-myInactiveBorderColor = "#262626"
+myInactiveBorderColor = "#222222"
 myBorderWidth = 3
 
 --- Ws Stuff
