@@ -6,19 +6,24 @@ needed.
 
 Installation
 ------------
-
 Simply copy my file into you ~/.xmonad directory and then recompile.
-Other necessary files are coming soon...
+
+Put the .conky_bar file into your home directory.
+
+Dependencies
+------------
+xmonad (obviously)
+conky
+dzen2 (a new version)
+dmenu
 
 Notes
 -----
-
 To get the benefit of xft fonts in dzen, use an development version
 
 
 License
 -------
-
 This file is released under the GNU GPL, please feel free to use it
 and modify it in any way you see fit.
 
