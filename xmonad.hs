@@ -6,40 +6,51 @@
 --
  
 --{{{ Imports 
+import Data.List
+
+import Graphics.X11.ExtraTypes.XF86
+import Graphics.X11.Xlib
+
+import System.IO
+
 import XMonad
+
+import XMonad.Actions.GridSelect
+
 import XMonad.Core
- 
-import XMonad.Prompt
-import XMonad.Prompt.Shell
-import XMonad.Prompt.Man
- 
-import XMonad.Layout
-import XMonad.Layout.NoBorders
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.StackTile
-import XMonad.Layout.Grid
-import XMonad.Layout.IM
-import XMonad.Layout.PerWorkspace
- 
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.SetWMName
- 
-import XMonad.Actions.GridSelect
+import XMonad.Hooks.UrgencyHook
+
+import XMonad.Layout
+import XMonad.Layout.Grid
+import XMonad.Layout.IM
+import XMonad.Layout.NoBorders
+import XMonad.Layout.PerWorkspace
+import XMonad.Layout.ResizableTile
+import XMonad.Layout.StackTile
+
+import XMonad.Prompt
+import XMonad.Prompt.Man
+import XMonad.Prompt.Shell
 
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
 
-import Graphics.X11.Xlib
-import Graphics.X11.ExtraTypes.XF86
 import qualified Data.Map as M
-import System.IO
-import Data.List
 --}}}
 
 --{{{ Helper Functions
 stripIM s = if ("IM " `isPrefixOf` s) then drop (length "IM ") s else s
+
+wrapIcon icon = "^p(5)^i(" ++ icons ++ icon ++ ")^p(5)"
+--}}}
+
+
+--{{{ Path variables
+icons = "/home/david/.icons/"
 --}}}
 
 main = do
@@ -175,7 +186,7 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
 ---{{{ Dzen Config
 myDzenPP h = defaultPP {
   ppOutput = hPutStrLn h,
-  ppSep = ("^fg("++ myHighlightedBgColor  ++ ") ::^fg()"),
+  ppSep = (wrapFg myHighlightedBgColor "|"),
   ppWsSep = "",
   ppCurrent = wrapFgBg myCurrentWsFgColor myCurrentWsBgColor,
   ppVisible = wrapFgBg myVisibleWsFgColor myVisibleWsBgColor,
@@ -185,9 +196,9 @@ myDzenPP h = defaultPP {
   ppTitle = (\x -> "  " ++ wrapFg myTitleFgColor x),
   ppLayout  = dzenColor myFgColor"" .
                 (\x -> case x of
-                    "ResizableTall" -> " Tall"
-                    "Mirror ResizableTall" -> " Wide"
-                    "Full" -> " Full"
+                    "ResizableTall" -> wrapIcon "dzen_bitmaps/tall.xbm"
+                    "Mirror ResizableTall" -> wrapIcon "dzen_bitmaps/mtall.xbm"
+                    "Full" -> wrapIcon "dzen_bitmaps/full.xbm"
                 ) . stripIM
   }
   where
