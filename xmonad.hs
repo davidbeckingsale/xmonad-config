@@ -97,10 +97,10 @@ myUrgencyHintBgColor = "blue"
 myDzenGenOpts = "-fg '" ++ myFgColor ++ "' -bg '" ++ myBgColor ++ "' -h '15'" ++ " -e 'onstart=lower'"
  
 -- Status Bar
-myStatusBar = "dzen2 -w 750 -ta l " ++ myDzenGenOpts
+myStatusBar = "dzen2 -w 1100 -ta l " ++ myDzenGenOpts
  
 -- Conky Bar
-myConkyBar = "conky -c ~/.conky_bar | dzen2 -x 750 -w 450 " ++ myDzenGenOpts
+myConkyBar = "conky -c ~/.conky_bar | dzen2 -x 0 -w 1200 -y 785" ++ myDzenGenOpts
  
 -- Layouts
 myLayoutHook = avoidStruts $ onWorkspace " 4 im " imLayout $ standardLayouts
