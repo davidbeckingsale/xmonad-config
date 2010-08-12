@@ -10,6 +10,11 @@ Simply copy my file into you ~/.xmonad directory and then recompile.
 
 Put the .conky_bar file into your home directory.
 
+Update the absolute paths in the .conky_bar file, change "/home/david"
+to "/home/username" if the .icons directory exists in your home directory
+
+Put the .icon directory into your home directory.
+
 Dependencies
 ------------
 xmonad (obviously)
@@ -20,7 +25,7 @@ dmenu
 Notes
 -----
 To get the benefit of xft fonts in dzen, use an development version
-
+Icons can be obtained from http://dzen.geekmode.org/dwiki/doku.php?id=dzen:icon-packs
 
 License
 -------
