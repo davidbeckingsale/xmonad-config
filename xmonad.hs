@@ -105,7 +105,7 @@ myUrgencyHintBgColor = "blue"
 -- }}}
 
 -- dzen general options
-myDzenGenOpts = "-fg '" ++ myFgColor ++ "' -bg '" ++ myBgColor ++ "' -h '15'" ++ " -e 'onstart=lower'"
+myDzenGenOpts = "-fg '" ++ myFgColor ++ "' -bg '" ++ myBgColor ++ "' -h '15'" ++ " -e 'onstart=lower' -fn '" ++ myFont ++ "'"
  
 -- Status Bar
 myStatusBar = "dzen2 -w 680 -ta l " ++ myDzenGenOpts
