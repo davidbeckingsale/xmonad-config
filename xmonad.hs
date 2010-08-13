@@ -152,7 +152,7 @@ myManageHook = composeAll
      className =? "Pidgin"           --> doShift " 4 im ",      -- Shift Pidgin to im desktop 
      className =? "Chrome"           --> doShift " 3 www ",     -- Shift Chromium to www
      className =? "Firefox"          --> doShift " 3 www ",     -- Shift Firefox to www
-     className =? "Emacs"            --> doShift " 2 ed ",   -- Shift emacs to emacs
+     className =? "Emacs"            --> doShift " 2 ed ",      -- Shift emacs to emacs
      className =? "Wicd-client.py"   --> doFloat                -- Float Wicd window 
    ]
 --}}}
