@@ -168,7 +168,7 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((modm, xK_s), spawn "chromium manage.sugarstats.com/stats/today"),
   ((modm, xK_c), spawn "chromium"),
   ((modm, xK_f), spawn "urxvt -e mc"),
-  ((modm, xK_m), spawn "urxvt -e alsamixer"),
+  ((modm, xK_m), spawn "chromium --app='https://mail.google.com'"),
   ((0, xK_Print), spawn "scrot"),
   ((modm, xK_v), spawn "VirtualBox"),
   ((modm, xK_g), goToSelected myGSConfig),
