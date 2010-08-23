@@ -165,7 +165,7 @@ myKeys x  = M.union (M.fromList (newKeys x)) (keys defaultConfig x)
 newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((modm, xK_p), spawn "dmenu_run -nb '#3F3F3F' -nf '#DCDCCC' -sb '#7F9F7F' -sf '#DCDCCC'"),  --Uses a colourscheme with dmenu
   ((modm, xK_b), spawn "firefox"),
-  ((modm, xK_s), spawn "chromium manage.sugarstats.com/stats/today"),
+  ((modm, xK_s), spawn "firefox manage.sugarstats.com/stats/today"),
   ((modm, xK_c), spawn "chromium --app='https://calendar.google.com'"),
   ((modm, xK_f), spawn "urxvt -e mc"),
   ((modm, xK_m), spawn "chromium --app='https://mail.google.com'"),
