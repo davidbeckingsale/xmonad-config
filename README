@@ -7,6 +7,7 @@ needed.
 Installation
 ------------
 Simply copy my file into you ~/.xmonad directory and then recompile.
+Run "xmonad --recompile" and then Mod+q to restart xmonad.
 
 Put the .conky_bar file into your home directory.
 
