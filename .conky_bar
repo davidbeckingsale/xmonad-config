@@ -8,9 +8,9 @@ own_window_type desktop
 update_interval 1.0 
  
 TEXT
-^i(.icons/xbm8x8/cpu.xbm) ^fg(\#8CD0D3)${cpu cpu0}%^fg() @ ^fg(\#DCA3A3)${freq_g}GHz^fg()\
-  ^i(.icons/xbm8x8/mem.xbm) ^fg(\#7F9F7F)$memperc%^fg()\
-  ^i(.icons/xbm8x8/ac_01.xbm) ^fg(\#8CD0D3)${battery_short BAT0}^fg()\
-  ^i(.icons/xbm8x8/clock.xbm) ^fg(\#F0DFAF) [${time %e/%m %H:%M:%S}]^fg()\
-  ^i(.icons/xbm8x8/net_up_02.xbm) ^fg(\#DCA3A3)${upspeed wlan0}^fg()\
-^i(.icons/xbm8x8/net_down_02.xbm) ^fg(\#7F9F7F)${downspeed wlan0}^fg()
+^i(.icons/xbm8x8/cpu.xbm) ${cpu cpu0}% @ ${freq_g}GHz\
+  ^i(.icons/xbm8x8/mem.xbm) $memperc%\
+  ^i(.icons/xbm8x8/ac_01.xbm) ${battery_short BAT0}\
+  ^i(.icons/xbm8x8/clock.xbm) [${time %e/%m %H:%M:%S}]\
+  ^i(.icons/xbm8x8/net_up_02.xbm) ${upspeed wlan0}\
+^i(.icons/xbm8x8/net_down_02.xbm) ${downspeed wlan0}
