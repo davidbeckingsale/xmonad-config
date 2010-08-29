@@ -181,8 +181,8 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((0, xF86XK_AudioNext), spawn "exaile -n"),
   ((0, xF86XK_AudioPrev), spawn "exaile -p"),
   ((modm, xK_y), sendMessage ToggleStruts),
-  ((modm, xK_L), sendMessage MirrorShrink),
-  ((modm, xK_H), sendMessage MirrorExpand)
+  ((modm, xK_u), sendMessage MirrorShrink),
+  ((modm, xK_i), sendMessage MirrorExpand)
    ]
 --}}}
 
