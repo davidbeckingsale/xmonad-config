@@ -83,7 +83,7 @@ myHighlightedFgColor = "#000000"
 myHighlightedBgColor = "#003CFF"
 
 --- Borders
-myActiveBorderColor = myCurrentWsBgColor
+myActiveBorderColor = myBgColor
 myInactiveBorderColor = "#262626"
 myBorderWidth = 2
 
@@ -108,10 +108,10 @@ myUrgencyHintBgColor = "blue"
 myDzenGenOpts = "-fg '" ++ myFgColor ++ "' -bg '" ++ myBgColor ++ "' -h '15'" ++ " -e 'onstart=lower' -fn '" ++ myFont ++ "'"
  
 -- Status Bar
-myStatusBar = "dzen2 -w 680 -ta l " ++ myDzenGenOpts
+myStatusBar = "dzen2 -w 700 -ta l " ++ myDzenGenOpts
  
 -- Conky Bar
-myConkyBar = "conky -c ~/.conky_bar | dzen2 -x 660 -w 500 -ta r " ++ myDzenGenOpts
+myConkyBar = "conky -c ~/.conky_bar | dzen2 -x 700 -w 450 -ta r " ++ myDzenGenOpts
  
 -- Layouts
 myLayoutHook = avoidStruts $ onWorkspace " 4 im " imLayout $ standardLayouts
