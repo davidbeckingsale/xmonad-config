@@ -84,8 +84,8 @@ myHighlightedBgColor = "#003CFF"
 
 --- Borders
 myActiveBorderColor = myBgColor
-myInactiveBorderColor = "#262626"
-myBorderWidth = 2
+myInactiveBorderColor = myFgColor
+myBorderWidth = 1
 
 --- Ws Stuff
 myCurrentWsFgColor = myHighlightedFgColor
