@@ -77,10 +77,10 @@ myFont = "Terminus-6"
 -- Colors
 
 --- Main Colours
-myFgColor = "#DCDCCC"
-myBgColor = "#3f3f3f"
-myHighlightedFgColor = myFgColor
-myHighlightedBgColor = "#7F9F7F"
+myFgColor = "#000000"
+myBgColor = "#FFFFFF"
+myHighlightedFgColor = "#000000"
+myHighlightedBgColor = "#003CFF"
 
 --- Borders
 myActiveBorderColor = myCurrentWsBgColor
