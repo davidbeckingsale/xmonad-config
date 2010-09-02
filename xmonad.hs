@@ -83,7 +83,7 @@ myHighlightedFgColor = "#000000"
 myHighlightedBgColor = "#003CFF"
 
 --- Borders
-myActiveBorderColor = myFgColor
+myActiveBorderColor = myHighlightedBgColor
 myInactiveBorderColor = "#8F8F8F"
 myBorderWidth = 1
 
