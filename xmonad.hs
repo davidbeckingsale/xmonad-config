@@ -21,6 +21,7 @@ import XMonad.Core
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.UrgencyHook
 
@@ -36,6 +37,8 @@ import XMonad.Prompt
 import XMonad.Prompt.Man
 import XMonad.Prompt.Shell
 
+import XMonad.StackSet as W
+
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
 
@@ -47,7 +50,6 @@ stripIM s = if ("IM " `isPrefixOf` s) then drop (length "IM ") s else s
 
 wrapIcon icon = "^p(5)^i(" ++ icons ++ icon ++ ")^p(5)"
 --}}}
-
 
 --{{{ Path variables
 icons = "/home/david/.icons/"
@@ -62,11 +64,11 @@ main = do
       , focusedBorderColor = myActiveBorderColor
       , borderWidth = myBorderWidth
       , manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
-      , layoutHook = avoidStruts $ myLayoutHook
+      , layoutHook = smartBorders $ avoidStruts $ myLayoutHook
       , logHook = dynamicLogWithPP $ myDzenPP myStatusBarPipe
       , modMask = mod4Mask
       , keys = myKeys
-      , workspaces = myWorkspaces
+      , XMonad.Core.workspaces = myWorkspaces
      }   
  
 --{{{ Theme 
@@ -149,7 +151,8 @@ myManageHook = composeAll
      className =? "Chrome"           --> doShift " 3 www ",     -- Shift Chromium to www
      className =? "Firefox"          --> doShift " 3 www ",     -- Shift Firefox to www
      className =? "Emacs"            --> doShift " 2 ed ",      -- Shift emacs to emacs
-     className =? "Wicd-client.py"   --> doFloat                -- Float Wicd window 
+     className =? "Wicd-client.py"   --> doFloat,                -- Float Wicd window 
+     isFullscreen 		     --> (doF W.focusDown <+> doFullFloat)
    ]
 --}}}
  
