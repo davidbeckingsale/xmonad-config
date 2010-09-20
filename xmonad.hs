@@ -69,6 +69,7 @@ main = do
       , modMask = mod4Mask
       , keys = myKeys
       , XMonad.Core.workspaces = myWorkspaces
+      , startupHook = setWMName "LG3D"
      }   
  
 --{{{ Theme 
