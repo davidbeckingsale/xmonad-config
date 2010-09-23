@@ -114,7 +114,7 @@ myDzenGenOpts = "-fg '" ++ myFgColor ++ "' -bg '" ++ myBgColor ++ "' -h '15'" ++
 myStatusBar = "dzen2 -w 800 -ta l " ++ myDzenGenOpts
  
 -- Conky Bar
-myConkyBar = "conky -c ~/.conky_bar | dzen2 -x 800 -w 400 -ta l " ++ myDzenGenOpts
+myConkyBar = "conky -c ~/.conky_bar | dzen2 -x 780 -w 420 -ta l " ++ myDzenGenOpts
  
 -- Layouts
 myLayoutHook = avoidStruts $ onWorkspace " 4 im " imLayout $ standardLayouts
