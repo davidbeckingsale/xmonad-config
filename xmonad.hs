@@ -80,8 +80,8 @@ myFont = "Terminus-6"
 -- Colors
 
 --- Main Colours
-myFgColor = "#DCDCCC"
-myBgColor = "#3f3f3f"
+myFgColor = "#FFFFFF"
+myBgColor = "#000000"
 myHighlightedFgColor = myFgColor
 myHighlightedBgColor = "#7F9F7F"
 
@@ -131,8 +131,9 @@ myWorkspaces =
       " 2 ed ",
       " 3 www ",
       " 4 im ",
-      " 5 ",
-      " 6 ",
+      " 5 vm ",
+      " 6 doc ",
+      " 7 ",
       " . "
    ]
 
