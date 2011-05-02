@@ -1,11 +1,11 @@
 --
 -- David Beckingsale's xmonad config
--- 
--- Started out as avandael's xmonad.hs 
+--
+-- Started out as avandael's xmonad.hs
 -- Also uses stuff from pbrisbin.com:8080/
 --
- 
---{{{ Imports 
+
+--{{{ Imports
 import Data.List
 
 import Graphics.X11.ExtraTypes.XF86
@@ -70,13 +70,13 @@ main = do
       , keys = myKeys
       , XMonad.Core.workspaces = myWorkspaces
       , startupHook = setWMName "LG3D"
-     }   
- 
---{{{ Theme 
+     }
+
+--{{{ Theme
 
 --Font
 myFont = "Terminus-6"
- 
+
 -- Colors
 
 --- Main Colours
@@ -104,24 +104,24 @@ myTitleFgColor = myFgColor
 --- Urgency
 myUrgencyHintFgColor = "red"
 myUrgencyHintBgColor = "blue"
- 
+
 -- }}}
 
 -- dzen general options
 myDzenGenOpts = "-fg '" ++ myFgColor ++ "' -bg '" ++ myBgColor ++ "' -h '15'" ++ " -e 'onstart=lower' -fn '" ++ myFont ++ "'"
- 
+
 -- Status Bar
-myStatusBar = "dzen2 -w 800 -ta l " ++ myDzenGenOpts
- 
+myStatusBar = "dzen2 -w 1920 -ta l " ++ myDzenGenOpts
+
 -- Conky Bar
-myConkyBar = "conky -c ~/.conky_bar | dzen2 -x 780 -w 420 -ta l " ++ myDzenGenOpts
- 
+myConkyBar = "conky -c ~/.conky_bar | dzen2 -x 1920 -w 1280 -ta c " ++ myDzenGenOpts
+
 -- Layouts
 myLayoutHook = avoidStruts $ onWorkspace " 4 im " imLayout $ standardLayouts
                where standardLayouts = tiled ||| Mirror tiled ||| Full
                      imLayout = withIM (2/10) (Role "buddy_list") (standardLayouts)
                      tiled = ResizableTall nmaster delta ratio []
-                     nmaster = 1 
+                     nmaster = 1
                      delta = 0.03
                      ratio = 0.5
 -- Workspaces
@@ -131,9 +131,11 @@ myWorkspaces =
       " 2 ed ",
       " 3 www ",
       " 4 im ",
+      " 5 ",
+      " 6 ",
       " . "
    ]
- 
+
 -- Urgency hint configuration
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
     {
@@ -144,23 +146,23 @@ myUrgencyHook = withUrgencyHook dzenUrgencyHook
          "-bg", "" ++ myUrgencyHintBgColor ++ ""
          ]
     }
- 
+
 --{{{ Hook for managing windows
 myManageHook = composeAll
    [ resource  =? "Do"               --> doIgnore,              -- Ignore GnomeDo
-     className =? "Pidgin"           --> doShift " 4 im ",      -- Shift Pidgin to im desktop 
+     className =? "Pidgin"           --> doShift " 4 im ",      -- Shift Pidgin to im desktop
      className =? "Chrome"           --> doShift " 3 www ",     -- Shift Chromium to www
      className =? "Firefox"          --> doShift " 3 www ",     -- Shift Firefox to www
      className =? "Emacs"            --> doShift " 2 ed ",      -- Shift emacs to emacs
-     className =? "Wicd-client.py"   --> doFloat,                -- Float Wicd window 
+     className =? "Wicd-client.py"   --> doFloat,                -- Float Wicd window
      isFullscreen 		     --> (doF W.focusDown <+> doFullFloat)
    ]
 --}}}
- 
+
 -- Union default and new key bindings
 myKeys x  = M.union (M.fromList (newKeys x)) (keys defaultConfig x)
- 
---{{{ Keybindings 
+
+--{{{ Keybindings
 --    Add new and/or redefine key bindings
 newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((modm, xK_p), spawn "dmenu_run -nb '#3F3F3F' -nf '#DCDCCC' -sb '#7F9F7F' -sf '#DCDCCC'"),  --Uses a colourscheme with dmenu
@@ -169,10 +171,10 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((modm, xK_c), spawn "chromium --app='https://calendar.google.com'"),
   ((modm, xK_f), spawn "urxvt -e mc"),
   ((modm, xK_m), spawn "chromium --app='https://mail.google.com'"),
+  ((modm, xK_n), spawn "chromium --app='https://simple-note.appspot.com'"),
   ((modm, xK_g), spawn "chromium --app='https://www.nirvanahq.com/app'"),
   ((0, xK_Print), spawn "scrot"),
   ((modm, xK_v), spawn "VirtualBox"),
-  ((modm, xK_z), goToSelected myGSConfig),
   ((0, xF86XK_AudioMute), spawn "amixer -q set PCM toggle"),
   ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set PCM 2+"),
   ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set PCM 2-"),
@@ -182,7 +184,8 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((0, xF86XK_AudioPrev), spawn "exaile -p"),
   ((modm, xK_y), sendMessage ToggleStruts),
   ((modm, xK_u), sendMessage MirrorShrink),
-  ((modm, xK_i), sendMessage MirrorExpand)
+  ((modm, xK_i), sendMessage MirrorExpand),
+  ((modm, xK_z), spawn "chromium --app='http://www.evernote.com/Home.action'")
    ]
 --}}}
 
@@ -211,14 +214,4 @@ myDzenPP h = defaultPP {
 --}}}
 
 --{{{ GridSelect
-myGSConfig = defaultGSConfig
-    { gs_cellheight = 50
-    , gs_cellwidth = 250
-    , gs_cellpadding = 10
-    --, gs_colorizer = ""
-    , gs_font = "" ++ myFont ++ ""
-    --, gs_navigate = ""
-    --, gs_originFractX = ""
-    --, gs_originFractY = ""
-    }
---}}}    
+
