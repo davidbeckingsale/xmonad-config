@@ -70,6 +70,7 @@ main = do
       , keys = myKeys
       , XMonad.Core.workspaces = myWorkspaces
       , startupHook = setWMName "LG3D"
+      , focusFollowsMouse = False
      }
 
 --{{{ Theme
@@ -80,24 +81,24 @@ myFont = "Terminus-6"
 -- Colors
 
 --- Main Colours
-myFgColor = "#FFFFFF"
-myBgColor = "#000000"
+myFgColor = "#aaaaaa"
+myBgColor = "#222222"
 myHighlightedFgColor = myFgColor
-myHighlightedBgColor = "#7F9F7F"
+myHighlightedBgColor = "#93d44f"
 
 --- Borders
 myActiveBorderColor = myCurrentWsBgColor
-myInactiveBorderColor = "#262626"
+myInactiveBorderColor = "#555753"
 myBorderWidth = 2
 
 --- Ws Stuff
-myCurrentWsFgColor = myHighlightedFgColor
+myCurrentWsFgColor = "#222222"
 myCurrentWsBgColor = myHighlightedBgColor
 myVisibleWsFgColor = myBgColor
-myVisibleWsBgColor = "#CCDC90"
-myHiddenWsFgColor = myHighlightedFgColor
+myVisibleWsBgColor = "#c8e7a8"
+myHiddenWsFgColor = "#FFFFFF"
 myHiddenEmptyWsFgColor = "#8F8F8F"
-myUrgentWsBgColor = "#DCA3A3"
+myUrgentWsBgColor = "#ff6565"
 myTitleFgColor = myFgColor
 
 
@@ -108,13 +109,14 @@ myUrgencyHintBgColor = "blue"
 -- }}}
 
 -- dzen general options
-myDzenGenOpts = "-fg '" ++ myFgColor ++ "' -bg '" ++ myBgColor ++ "' -h '15'" ++ " -e 'onstart=lower' -fn '" ++ myFont ++ "'"
+myDzenGenOpts = "-fg '" ++ myFgColor ++ "' -bg '" ++ myBgColor ++ "' -h '18'" ++ " -e 'onstart=lower' -fn '" ++ myFont ++ "'"
 
 -- Status Bar
 myStatusBar = "dzen2 -w 1920 -ta l " ++ myDzenGenOpts
 
 -- Conky Bar
 myConkyBar = "conky -c ~/.conky_bar | dzen2 -x 0 -y 1500 -w 1920  -ta c " ++ myDzenGenOpts
+-- myMPDBar = "conky -c ~/.conky_mpd | dzen2 -x 1700 -w 320 -ta r " ++ myDzenGenOpts
 
 -- Layouts
 myLayoutHook = avoidStruts $ onWorkspace " 4 im " imLayout $ standardLayouts
@@ -166,7 +168,7 @@ myKeys x  = M.union (M.fromList (newKeys x)) (keys defaultConfig x)
 --{{{ Keybindings
 --    Add new and/or redefine key bindings
 newKeys conf@(XConfig {XMonad.modMask = modm}) = [
-  ((modm, xK_p), spawn "dmenu_run -nb '#3F3F3F' -nf '#DCDCCC' -sb '#7F9F7F' -sf '#DCDCCC'"),  --Uses a colourscheme with dmenu
+  ((modm, xK_p), spawn "dmenu_run -nb '#222222' -nf '#aaaaaa' -sb '#93d44f' -sf '#222222'"),  --Uses a colourscheme with dmenu
   ((modm, xK_b), spawn "firefox"),
   ((modm, xK_s), spawn "firefox manage.sugarstats.com/stats/today"),
   ((modm, xK_c), spawn "chromium --app='https://calendar.google.com'"),
