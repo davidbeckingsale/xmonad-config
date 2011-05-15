@@ -156,7 +156,8 @@ myManageHook = composeAll
      className =? "Pidgin"           --> doShift " 4 im ",      -- Shift Pidgin to im desktop
      className =? "Chrome"           --> doShift " 3 www ",     -- Shift Chromium to www
      className =? "Firefox"          --> doShift " 3 www ",     -- Shift Firefox to www
-     className =? "Emacs"            --> doShift " 2 ed ",      -- Shift emacs to emacs
+     className =? "Emacs"            --> doShift " 2 ed ",      -- Shift emacs to ed workspace
+     className =? "Gvim"	     --> doShift " 2 ed ",      -- shift gvim to ed workspace
      className =? "Wicd-client.py"   --> doFloat,                -- Float Wicd window
      isFullscreen 		     --> (doF W.focusDown <+> doFullFloat)
    ]
@@ -175,7 +176,7 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((modm, xK_f), spawn "urxvt -e mc"),
   ((modm, xK_m), spawn "chromium --app='https://mail.google.com'"),
   ((modm, xK_n), spawn "chromium --app='https://simple-note.appspot.com'"),
-  ((modm, xK_g), spawn "chromium --app='https://www.nirvanahq.com/app'"),
+  ((modm, xK_g), spawn "chromium --app='https://app.nirvanahq.com'"),
   ((0, xK_Print), spawn "scrot"),
   ((modm, xK_v), spawn "VirtualBox"),
   ((0, xF86XK_AudioMute), spawn "amixer -q set PCM toggle"),
