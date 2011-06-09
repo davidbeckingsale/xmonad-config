@@ -103,8 +103,8 @@ myTitleFgColor = myFgColor
 
 
 --- Urgency
-myUrgencyHintFgColor = "red"
-myUrgencyHintBgColor = "blue"
+myUrgencyHintFgColor = "#000000"
+myUrgencyHintBgColor = "#ff6565"
 
 -- }}}
 
@@ -143,10 +143,11 @@ myWorkspaces =
 myUrgencyHook = withUrgencyHook dzenUrgencyHook
     {
       args = [
-         "-x", "0", "-y", "576", "-h", "15", "-w", "1024",
-         "-ta", "r",
+         "-x", "0", "-y", "1180", "-h", "20", "-w", "1920",
+         "-ta", "c",
          "-fg", "" ++ myUrgencyHintFgColor ++ "",
-         "-bg", "" ++ myUrgencyHintBgColor ++ ""
+         "-bg", "" ++ myUrgencyHintBgColor ++ "",
+         "-fn", "" ++ myFont ++ ""
          ]
     }
 
@@ -171,7 +172,6 @@ myKeys x  = M.union (M.fromList (newKeys x)) (keys defaultConfig x)
 newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((modm, xK_p), spawn "dmenu_run -nb '#222222' -nf '#aaaaaa' -sb '#93d44f' -sf '#222222'"),  --Uses a colourscheme with dmenu
   ((modm, xK_b), spawn "firefox"),
-  ((modm, xK_s), spawn "firefox manage.sugarstats.com/stats/today"),
   ((modm, xK_c), spawn "chromium --app='https://calendar.google.com'"),
   ((modm, xK_f), spawn "urxvt -e mc"),
   ((modm, xK_m), spawn "chromium --app='https://mail.google.com'"),
@@ -189,7 +189,8 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((modm, xK_y), sendMessage ToggleStruts),
   ((modm, xK_u), sendMessage MirrorShrink),
   ((modm, xK_i), sendMessage MirrorExpand),
-  ((modm, xK_z), spawn "chromium --app='http://www.evernote.com/Home.action'")
+  ((modm, xK_z), spawn "chromium --app='http://www.evernote.com/Home.action'"),
+  ((modm, xK_s), goToSelected defaultGSConfig)
    ]
 --}}}
 
@@ -218,4 +219,5 @@ myDzenPP h = defaultPP {
 --}}}
 
 --{{{ GridSelect
+
 
