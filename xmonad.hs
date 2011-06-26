@@ -41,6 +41,7 @@ import XMonad.StackSet as W
 
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
+import XMonad.Util.Scratchpad
 
 import qualified Data.Map as M
 --}}}
@@ -152,7 +153,7 @@ myUrgencyHook = withUrgencyHook dzenUrgencyHook
     }
 
 --{{{ Hook for managing windows
-myManageHook = composeAll
+myManageHook = (composeAll
    [ resource  =? "Do"               --> doIgnore,              -- Ignore GnomeDo
      className =? "Pidgin"           --> doShift " 4 im ",      -- Shift Pidgin to im desktop
      className =? "Chrome"           --> doShift " 3 www ",     -- Shift Chromium to www
@@ -161,7 +162,15 @@ myManageHook = composeAll
      className =? "Gvim"	     --> doShift " 2 ed ",      -- shift gvim to ed workspace
      className =? "Wicd-client.py"   --> doFloat,                -- Float Wicd window
      isFullscreen 		     --> (doF W.focusDown <+> doFullFloat)
-   ]
+    , className =? "Tilda"          --> doFloat
+   ]) <+> manageScratchpad
+
+manageScratchpad = scratchpadManageHook (W.RationalRect l t w h)
+  where
+    h = 0.2
+    w = 1
+    t = 1 - h
+    l = 1 - w
 --}}}
 
 -- Union default and new key bindings
@@ -170,7 +179,7 @@ myKeys x  = M.union (M.fromList (newKeys x)) (keys defaultConfig x)
 --{{{ Keybindings
 --    Add new and/or redefine key bindings
 newKeys conf@(XConfig {XMonad.modMask = modm}) = [
-  ((modm, xK_p), spawn "dmenu_run -nb '#222222' -nf '#aaaaaa' -sb '#93d44f' -sf '#222222'"),  --Uses a colourscheme with dmenu
+  ((modm, xK_u), spawn "dmenu_run -nb '#222222' -nf '#aaaaaa' -sb '#93d44f' -sf '#222222'"),  --Uses a colourscheme with dmenu
   ((modm, xK_b), spawn "firefox"),
   ((modm, xK_c), spawn "chromium --app='https://calendar.google.com'"),
   ((modm, xK_f), spawn "urxvt -e mc"),
@@ -187,10 +196,18 @@ newKeys conf@(XConfig {XMonad.modMask = modm}) = [
   ((0, xF86XK_AudioNext), spawn "exaile -n"),
   ((0, xF86XK_AudioPrev), spawn "exaile -p"),
   ((modm, xK_y), sendMessage ToggleStruts),
-  ((modm, xK_u), sendMessage MirrorShrink),
-  ((modm, xK_i), sendMessage MirrorExpand),
+  ((modm, xK_comma), sendMessage MirrorShrink),
+  ((modm, xK_p), sendMessage MirrorExpand),
   ((modm, xK_z), spawn "chromium --app='http://www.evernote.com/Home.action'"),
-  ((modm, xK_s), goToSelected defaultGSConfig)
+  ((modm, xK_s), goToSelected defaultGSConfig),
+  ((modm, xK_o), spawn $ XMonad.terminal conf),
+  ((modm, xK_a), windows W.swapMaster),
+  ((modm, xK_apostrophe), sendMessage Shrink),
+  ((modm, xK_y), sendMessage Expand),
+  ((modm, xK_e), scratchpadSpawnActionTerminal "urxvtc"),
+  ((modm, xK_Tab), sendMessage NextLayout),
+  ((modm .|. controlMask, xK_period ), sendMessage (IncMasterN 1)),
+  ((modm, xK_period), sendMessage (IncMasterN (-1)))
    ]
 --}}}
 
@@ -201,7 +218,7 @@ myDzenPP h = defaultPP {
   ppWsSep = "",
   ppCurrent = wrapFgBg myCurrentWsFgColor myCurrentWsBgColor,
   ppVisible = wrapFgBg myVisibleWsFgColor myVisibleWsBgColor,
-  ppHidden = wrapFg myHiddenWsFgColor,
+  ppHidden = wrapFg myHiddenWsFgColor . noScratchPad,
   ppHiddenNoWindows = wrapFg myHiddenEmptyWsFgColor,
   ppUrgent = wrapBg myUrgentWsBgColor,
   ppTitle = (\x -> "  " ++ wrapFg myTitleFgColor x),
@@ -216,6 +233,7 @@ myDzenPP h = defaultPP {
     wrapFgBg fgColor bgColor content= wrap ("^fg(" ++ fgColor ++ ")^bg(" ++ bgColor ++ ")") "^fg()^bg()" content
     wrapFg color content = wrap ("^fg(" ++ color ++ ")") "^fg()" content
     wrapBg color content = wrap ("^bg(" ++ color ++ ")") "^bg()" content
+    noScratchPad ws = if ws == "NSP" then "" else ws
 --}}}
 
 --{{{ GridSelect
