@@ -11,8 +11,7 @@ Run "xmonad --recompile" and then Mod+q to restart xmonad.
 
 Put the .conky_bar file into your home directory.
 
-Update the absolute paths in the .conky_bar file, change "/home/david"
-to "/home/username" if the .icons directory exists in your home directory
+Update the absolute icon path in the xmonad.hs file
 
 Put the .icon directory into your home directory.
 
